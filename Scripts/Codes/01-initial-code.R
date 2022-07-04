@@ -35,7 +35,7 @@ week_bppcat_function<- function(df){
         df %>% 
                 group_by(date) %>%   
                 summarise(mean_price=mean(price0,na.rm=T),
-                          median_price=median(price0),na.rm=T) %>% 
+                          median_price=median(price0,na.rm=T)) %>% 
                 tk_xts(date_var = date) %>% 
                 apply.weekly(mean,na.rm=T)
 }
