@@ -2,7 +2,7 @@
 source("Scripts/Functions/functions.R")
 packages<-c("fs","tseries","urca","kableExtra","gt","tidyverse","rtf","broom",
             "readxl","haven","tidyquant","forecast","dint","chron","lubridate",
-            "arrow","magrittr")
+            "arrow","magrittr","timetk","nombre")
 package_fn(packages)
 
 
@@ -23,12 +23,22 @@ package_fn(packages)
 df<-read_parquet("Data/Raw Data/us_data_paper.parquet") # read filtered data
 
 
+df1<-df %>% 
+        select(rid_id,cat_url,bppcat,date,price0) ## subset of the data
 
-
-df %<>%
-        arrange(date) %>% 
-        mutate(week=week(ymd(date))) %>% 
-        relocate(week) ## create week and arrange
+df_split<-split(df1,df1$bppcat) ## split it into dataframes by bppcat number
 
 
 
+##function to calculate weekly mean prices
+week_bppcat_function<- function(df){
+        df %>% 
+                group_by(date) %>%   
+                summarise(mean_price=mean(price0,na.rm=T),
+                          median_price=median(price0),na.rm=T) %>% 
+                tk_xts(date_var = date) %>% 
+                apply.weekly(mean,na.rm=T)
+}
+
+week_bppcat_list<-map(df_split,week_bppcat_function) %>% 
+        set_names(cardinal(as.numeric(names(df_split))))
