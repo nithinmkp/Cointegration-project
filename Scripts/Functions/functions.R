@@ -41,3 +41,29 @@ table_fn <- function(dest, x, y) {
         )
         addParagraph(dest, "\n")
 }
+
+
+## Data Plot Function ----
+data_plot_fn<- function(x,labtitle){
+        ind<-index(x)
+        x<-data.frame(x)
+        rownames(x)<-NULL
+        x  %>% 
+                mutate(date=ind) %>% 
+                select(date,dplyr::everything()) %>% 
+                pivot_longer(-date,
+                             names_to = "Series",
+                             values_to = "Values") %>% 
+                ggplot()+
+                aes(x=date,
+                    y=Values)+
+                geom_line()+
+                facet_wrap(~Series,scales = "free",
+                           nrow=2)+
+                scale_x_date(date_breaks = "12 week", date_labels = "%d-%b-%Y")+
+                theme_tq()+
+                labs(x="Date",
+                     y="Price",
+                     title = labtitle)
+        
+}
