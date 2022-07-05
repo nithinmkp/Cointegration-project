@@ -32,6 +32,7 @@ unitroot_fn<-function(x){
 # Complete TS table -------------------------------------------------------
 
 ts_fn <- function(df, cols, order = 1) {
+        df<-data.frame(df)
         for (col in cols) {
                 df <- mutate(df, "ln_{col}" := log(get(col)))
         }
@@ -50,7 +51,7 @@ ts_fn <- function(df, cols, order = 1) {
                 map_dfc(bind_cols) %>%
                 setNames(paste0("diff_", varnames))
         
-        df <- as_tibble(df[,-1])
+        df <- as_tibble(df)
         ln_df <- df %>% dplyr::select(starts_with("ln"))
         df <- df %>% dplyr::select(-starts_with("ln"))
         

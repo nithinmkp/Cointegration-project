@@ -55,3 +55,18 @@ tabs <- RTF(file = "unit_tables.rtf") #name of table
 
 iwalk(unit_results, ~ table_fn(tabs, x=.y, y=.x))
 done(tabs)
+
+
+table_list<-map(week_bppcat_list,~ts_fn(df=.x,cols=c("mean_price","median_price")))
+
+all_results<-map(table_list$`nine hundred eleven`, unitroot_fn)
+
+
+
+results_comb<-table_list %>% map(. %>% map(safely(unitroot_fn)) )%>% 
+        map(. %>% 
+                    map(pluck("result")) %>% 
+         map_df(bind_rows))
+                           
+
+
