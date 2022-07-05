@@ -2,7 +2,7 @@
 source("Scripts/Functions/functions.R")
 packages<-c("fs","tseries","urca","kableExtra","gt","tidyverse","rtf","broom",
             "readxl","haven","tidyquant","forecast","dint","chron","lubridate",
-            "arrow","magrittr","timetk","nombre")
+            "arrow","magrittr","timetk","nombre","tsbox","huxtable")
 package_fn(packages)
 
 
@@ -28,17 +28,30 @@ df1<-df %>%
 
 df_split<-split(df1,df1$bppcat) ## split it into dataframes by bppcat number
 
-
-
-##function to calculate weekly mean prices
-week_bppcat_function<- function(df){
-        df %>% 
-                group_by(date) %>%   
-                summarise(mean_price=mean(price0,na.rm=T),
-                          median_price=median(price0,na.rm=T)) %>% 
-                tk_xts(date_var = date) %>% 
-                apply.weekly(mean,na.rm=T)
-}
+# Calculate weekly mean and median prices ----
 
 week_bppcat_list<-map(df_split,week_bppcat_function) %>% 
         set_names(cardinal(as.numeric(names(df_split))))
+
+
+# Stationarity Analysis ----
+
+source("Scripts/Functions/unitroots.R") # Load my custom functions
+safe_unit<-safely(unitroot_fn) #safely compute
+unit_tests<-map(week_bppcat_list,safe_unit) 
+unit_results<-map(unit_tests,pluck("result")) %>% 
+        discard(~is.null(.x)) # results table
+
+varnames <- rep(c("Statistic", "P-Value", "Lag Length"), 3)
+
+map(unit_results,~rename_fn(df=.x,col_ind = -1,new_names = varnames)) %>% 
+        map(~kbl(.x, booktabs = T) %>%
+                    kable_classic(latex_options = "scale_down") %>%
+                    add_header_above(c(" " = 1, "ADF Test" = 3, "PP Test" = 3,
+                                       "KPSS Test" = 3))) # view results in viewer pane
+
+
+tabs <- RTF(file = "unit_tables.rtf") #name of table
+
+iwalk(unit_results, ~ table_fn(tabs, x=.y, y=.x))
+done(tabs)
