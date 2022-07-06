@@ -2,7 +2,8 @@
 source("Scripts/Functions/functions.R")
 packages<-c("fs","tseries","urca","kableExtra","gt","tidyverse","rtf","broom",
             "readxl","haven","tidyquant","forecast","dint","chron","lubridate",
-            "arrow","magrittr","timetk","nombre","tsbox","huxtable","here")
+            "arrow","magrittr","timetk","nombre","tsbox","huxtable","here",
+            "modelsummary")
 package_fn(packages)
 
 
