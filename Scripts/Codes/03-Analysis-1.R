@@ -66,3 +66,33 @@ results_comb  %>%
                                        "KPSS Test" = 3)) %>% 
                     save_kable(paste0("Tables/Results/Unit-root/unit_root-",.y,".tex")))
 
+
+### Unit root tests (urca package) ----
+data_arraned_list<-week_bppcat_list %>% map(data_arrane_fn) %>% 
+        subset(names(data_arraned_list)!="Book publishing")
+        
+
+test_results<-table_list %>% map(. %>% 
+                           map(possibly(test_stats,otherwise = NULL)))
+
+
+res_tabl<-test_results %>% map(. %>% 
+                            map( possibly(stationary_table_fn,otherwise = NULL)))%>%
+        map(. %>% map_df(bind_rows)) %>% 
+        discard(~nrow(.x)==0)
+
+
+
+
+res_tabl<-map2(res_tabl,data_arraned_list,~.x %>% 
+             mutate(Breakpoint=case_when(
+                     !is.na(Breakpoint)~.y$date[Breakpoint])))
+
+
+res_tabl %>% imap(~kbl(.x, booktabs = T) %>%
+                          kable_classic(latex_options = "scale_down")) #for viewing
+
+res_tabl %>% imap(~kbl(.x, booktabs = T,format = "latex") %>%
+                         kable_classic(latex_options = "scale_down") %>% 
+                          save_kable(paste0("Tables/Results/Unit-root/unit_root-urca-",
+                                            .y,".tex"))) #saved to latex files

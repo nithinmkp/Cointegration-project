@@ -42,15 +42,18 @@ table_fn <- function(dest, x, y) {
         addParagraph(dest, "\n")
 }
 
-
-## Data Plot Function ----
-data_plot_fn<- function(x,labtitle){
+## Data arrange (for adding dates) ----
+data_arrane_fn<-function(x){
         ind<-index(x)
         x<-data.frame(x)
         rownames(x)<-NULL
         x  %>% 
                 mutate(date=ind) %>% 
-                select(date,dplyr::everything()) %>% 
+                select(date,dplyr::everything())
+}
+## Data Plot Function ----
+data_plot_fn<- function(x,labtitle){
+        x %>% data_arrane_fn() %>% 
                 pivot_longer(-date,
                              names_to = "Series",
                              values_to = "Values") %>% 
@@ -66,4 +69,19 @@ data_plot_fn<- function(x,labtitle){
                      y="Price",
                      title = labtitle)
         
+}
+
+
+
+# Writing critical value table to word ----
+
+word_fn<-function(tab,x,y){
+        tab_name<-RTF(file = paste0(tab,".doc"))
+        tab_fn<-function(x,y){
+                addParagraph(tab_name,x,"\n")
+                addTable(tab_name,y)
+                addParagraph(tab_name,"\n")      
+        }
+        walk2(x,y,tab_fn)
+        done(tab_name)
 }

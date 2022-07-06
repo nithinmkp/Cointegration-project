@@ -1,0 +1,125 @@
+\begin{table}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{lllrrrrrrrl}
+\toprule
+Variable & Test & Model & Test Statistic.tau1 & Test Statistic.tau2 & Test Statistic.phi1 & Test Statistic.tau3 & Test Statistic.phi2 & Test Statistic.phi3 & Test Statistic & Breakpoint\\
+\midrule
+mean\_price1 & Augmented Dickey-Fuller Test & none & -0.876 & NA & NA & NA & NA & NA & NA & NA\\
+mean\_price2 & Augmented Dickey-Fuller Test & drift & NA & -2.715 & 3.685 & NA & NA & NA & NA & NA\\
+mean\_price3 & Augmented Dickey-Fuller Test & trend & NA & NA & NA & -2.955 & 2.934 & 4.399 & NA & NA\\
+mean\_price4 & Phillips-Perron & with intercept & NA & NA & NA & NA & NA & NA & -3.074 & NA\\
+mean\_price5 & Phillips-Perron & with intercept and trend & NA & NA & NA & NA & NA & NA & -3.683 & NA\\
+\addlinespace
+mean\_price6 & Elliot, Rothenberg and Stock & with intercept & NA & NA & NA & NA & NA & NA & -1.580 & NA\\
+mean\_price7 & Elliot, Rothenberg and Stock & with intercept and trend & NA & NA & NA & NA & NA & NA & -2.009 & NA\\
+median\_price1 & Augmented Dickey-Fuller Test & none & -1.092 & NA & NA & NA & NA & NA & NA & NA\\
+median\_price2 & Augmented Dickey-Fuller Test & drift & NA & -2.143 & 2.321 & NA & NA & NA & NA & NA\\
+median\_price3 & Augmented Dickey-Fuller Test & trend & NA & NA & NA & -3.960 & 5.255 & 7.854 & NA & NA\\
+\addlinespace
+median\_price4 & Phillips-Perron & with intercept & NA & NA & NA & NA & NA & NA & -2.597 & NA\\
+median\_price5 & Phillips-Perron & with intercept and trend & NA & NA & NA & NA & NA & NA & -5.397 & NA\\
+median\_price6 & Elliot, Rothenberg and Stock & with intercept & NA & NA & NA & NA & NA & NA & -2.050 & NA\\
+median\_price7 & Elliot, Rothenberg and Stock & with intercept and trend & NA & NA & NA & NA & NA & NA & -2.204 & NA\\
+mean\_price1 & Zivot-Andrews & intercept & NA & NA & NA & NA & NA & NA & -4.312 & 2008-10-12\\
+\addlinespace
+mean\_price2 & Zivot-Andrews & trend & NA & NA & NA & NA & NA & NA & -4.415 & 2009-08-30\\
+mean\_price3 & Zivot-Andrews & both & NA & NA & NA & NA & NA & NA & -4.719 & 2009-11-29\\
+median\_price1 & Zivot-Andrews & intercept & NA & NA & NA & NA & NA & NA & -5.324 & 2008-10-12\\
+median\_price2 & Zivot-Andrews & trend & NA & NA & NA & NA & NA & NA & -4.880 & 2009-08-23\\
+median\_price3 & Zivot-Andrews & both & NA & NA & NA & NA & NA & NA & -5.356 & 2008-10-12\\
+\addlinespace
+mean\_price1 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.922 & NA\\
+mean\_price2 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.351 & NA\\
+median\_price1 & KPSS & NA & NA & NA & NA & NA & NA & NA & 1.844 & NA\\
+median\_price2 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.268 & NA\\
+ln\_mean\_price1 & Augmented Dickey-Fuller Test & none & -0.161 & NA & NA & NA & NA & NA & NA & NA\\
+\addlinespace
+ln\_mean\_price2 & Augmented Dickey-Fuller Test & drift & NA & -2.561 & 3.280 & NA & NA & NA & NA & NA\\
+ln\_mean\_price3 & Augmented Dickey-Fuller Test & trend & NA & NA & NA & -2.650 & 2.393 & 3.589 & NA & NA\\
+ln\_mean\_price4 & Phillips-Perron & with intercept & NA & NA & NA & NA & NA & NA & -3.147 & NA\\
+ln\_mean\_price5 & Phillips-Perron & with intercept and trend & NA & NA & NA & NA & NA & NA & -3.678 & NA\\
+ln\_mean\_price6 & Elliot, Rothenberg and Stock & with intercept & NA & NA & NA & NA & NA & NA & -1.323 & NA\\
+\addlinespace
+ln\_mean\_price7 & Elliot, Rothenberg and Stock & with intercept and trend & NA & NA & NA & NA & NA & NA & -1.894 & NA\\
+ln\_median\_price1 & Augmented Dickey-Fuller Test & none & -0.526 & NA & NA & NA & NA & NA & NA & NA\\
+ln\_median\_price2 & Augmented Dickey-Fuller Test & drift & NA & -2.855 & 4.100 & NA & NA & NA & NA & NA\\
+ln\_median\_price3 & Augmented Dickey-Fuller Test & trend & NA & NA & NA & -4.237 & 6.009 & 8.987 & NA & NA\\
+ln\_median\_price4 & Phillips-Perron & with intercept & NA & NA & NA & NA & NA & NA & -2.843 & NA\\
+\addlinespace
+ln\_median\_price5 & Phillips-Perron & with intercept and trend & NA & NA & NA & NA & NA & NA & -4.751 & NA\\
+ln\_median\_price6 & Elliot, Rothenberg and Stock & with intercept & NA & NA & NA & NA & NA & NA & -1.997 & NA\\
+ln\_median\_price7 & Elliot, Rothenberg and Stock & with intercept and trend & NA & NA & NA & NA & NA & NA & -2.215 & NA\\
+ln\_mean\_price1 & Zivot-Andrews & intercept & NA & NA & NA & NA & NA & NA & -4.300 & 2009-11-29\\
+ln\_mean\_price2 & Zivot-Andrews & trend & NA & NA & NA & NA & NA & NA & -4.338 & 2009-09-20\\
+\addlinespace
+ln\_mean\_price3 & Zivot-Andrews & both & NA & NA & NA & NA & NA & NA & -4.859 & 2009-11-29\\
+ln\_median\_price1 & Zivot-Andrews & intercept & NA & NA & NA & NA & NA & NA & -4.630 & 2009-11-29\\
+ln\_median\_price2 & Zivot-Andrews & trend & NA & NA & NA & NA & NA & NA & -4.479 & 2009-09-20\\
+ln\_median\_price3 & Zivot-Andrews & both & NA & NA & NA & NA & NA & NA & -4.771 & 2009-08-02\\
+ln\_mean\_price1 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.815 & NA\\
+\addlinespace
+ln\_mean\_price2 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.341 & NA\\
+ln\_median\_price1 & KPSS & NA & NA & NA & NA & NA & NA & NA & 1.651 & NA\\
+ln\_median\_price2 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.143 & NA\\
+diff\_mean\_price1 & Augmented Dickey-Fuller Test & none & -9.583 & NA & NA & NA & NA & NA & NA & NA\\
+diff\_mean\_price2 & Augmented Dickey-Fuller Test & drift & NA & -9.542 & 45.531 & NA & NA & NA & NA & NA\\
+\addlinespace
+diff\_mean\_price3 & Augmented Dickey-Fuller Test & trend & NA & NA & NA & -9.496 & 30.133 & 45.196 & NA & NA\\
+diff\_mean\_price4 & Phillips-Perron & with intercept & NA & NA & NA & NA & NA & NA & -11.541 & NA\\
+diff\_mean\_price5 & Phillips-Perron & with intercept and trend & NA & NA & NA & NA & NA & NA & -11.471 & NA\\
+diff\_mean\_price6 & Elliot, Rothenberg and Stock & with intercept & NA & NA & NA & NA & NA & NA & -0.822 & NA\\
+diff\_mean\_price7 & Elliot, Rothenberg and Stock & with intercept and trend & NA & NA & NA & NA & NA & NA & -1.879 & NA\\
+\addlinespace
+diff\_median\_price1 & Augmented Dickey-Fuller Test & none & -10.247 & NA & NA & NA & NA & NA & NA & NA\\
+diff\_median\_price2 & Augmented Dickey-Fuller Test & drift & NA & -10.222 & 52.283 & NA & NA & NA & NA & NA\\
+diff\_median\_price3 & Augmented Dickey-Fuller Test & trend & NA & NA & NA & -10.157 & 34.575 & 51.820 & NA & NA\\
+diff\_median\_price4 & Phillips-Perron & with intercept & NA & NA & NA & NA & NA & NA & -13.669 & NA\\
+diff\_median\_price5 & Phillips-Perron & with intercept and trend & NA & NA & NA & NA & NA & NA & -13.587 & NA\\
+\addlinespace
+diff\_median\_price6 & Elliot, Rothenberg and Stock & with intercept & NA & NA & NA & NA & NA & NA & -0.796 & NA\\
+diff\_median\_price7 & Elliot, Rothenberg and Stock & with intercept and trend & NA & NA & NA & NA & NA & NA & -1.893 & NA\\
+diff\_ln\_mean\_price1 & Augmented Dickey-Fuller Test & none & -9.013 & NA & NA & NA & NA & NA & NA & NA\\
+diff\_ln\_mean\_price2 & Augmented Dickey-Fuller Test & drift & NA & -8.974 & 40.275 & NA & NA & NA & NA & NA\\
+diff\_ln\_mean\_price3 & Augmented Dickey-Fuller Test & trend & NA & NA & NA & -8.934 & 26.699 & 40.040 & NA & NA\\
+\addlinespace
+diff\_ln\_mean\_price4 & Phillips-Perron & with intercept & NA & NA & NA & NA & NA & NA & -11.711 & NA\\
+diff\_ln\_mean\_price5 & Phillips-Perron & with intercept and trend & NA & NA & NA & NA & NA & NA & -11.639 & NA\\
+diff\_ln\_mean\_price6 & Elliot, Rothenberg and Stock & with intercept & NA & NA & NA & NA & NA & NA & -0.625 & NA\\
+diff\_ln\_mean\_price7 & Elliot, Rothenberg and Stock & with intercept and trend & NA & NA & NA & NA & NA & NA & -1.656 & NA\\
+diff\_ln\_median\_price1 & Augmented Dickey-Fuller Test & none & -7.576 & NA & NA & NA & NA & NA & NA & NA\\
+\addlinespace
+diff\_ln\_median\_price2 & Augmented Dickey-Fuller Test & drift & NA & -7.551 & 28.527 & NA & NA & NA & NA & NA\\
+diff\_ln\_median\_price3 & Augmented Dickey-Fuller Test & trend & NA & NA & NA & -7.506 & 18.896 & 28.328 & NA & NA\\
+diff\_ln\_median\_price4 & Phillips-Perron & with intercept & NA & NA & NA & NA & NA & NA & -10.311 & NA\\
+diff\_ln\_median\_price5 & Phillips-Perron & with intercept and trend & NA & NA & NA & NA & NA & NA & -10.241 & NA\\
+diff\_ln\_median\_price6 & Elliot, Rothenberg and Stock & with intercept & NA & NA & NA & NA & NA & NA & -0.995 & NA\\
+\addlinespace
+diff\_ln\_median\_price7 & Elliot, Rothenberg and Stock & with intercept and trend & NA & NA & NA & NA & NA & NA & -2.164 & NA\\
+diff\_mean\_price1 & Zivot-Andrews & intercept & NA & NA & NA & NA & NA & NA & -6.939 & 2008-09-28\\
+diff\_mean\_price2 & Zivot-Andrews & trend & NA & NA & NA & NA & NA & NA & -6.524 & 2008-10-12\\
+diff\_mean\_price3 & Zivot-Andrews & both & NA & NA & NA & NA & NA & NA & -6.901 & 2008-09-28\\
+diff\_median\_price1 & Zivot-Andrews & intercept & NA & NA & NA & NA & NA & NA & -6.788 & 2008-09-07\\
+\addlinespace
+diff\_median\_price2 & Zivot-Andrews & trend & NA & NA & NA & NA & NA & NA & -6.575 & 2008-10-12\\
+diff\_median\_price3 & Zivot-Andrews & both & NA & NA & NA & NA & NA & NA & -6.883 & 2008-10-26\\
+diff\_ln\_mean\_price1 & Zivot-Andrews & intercept & NA & NA & NA & NA & NA & NA & -6.762 & 2009-09-20\\
+diff\_ln\_mean\_price2 & Zivot-Andrews & trend & NA & NA & NA & NA & NA & NA & -6.403 & 2008-10-12\\
+diff\_ln\_mean\_price3 & Zivot-Andrews & both & NA & NA & NA & NA & NA & NA & -6.738 & 2009-09-20\\
+\addlinespace
+diff\_ln\_median\_price1 & Zivot-Andrews & intercept & NA & NA & NA & NA & NA & NA & -7.088 & 2010-03-21\\
+diff\_ln\_median\_price2 & Zivot-Andrews & trend & NA & NA & NA & NA & NA & NA & -6.729 & 2008-10-12\\
+diff\_ln\_median\_price3 & Zivot-Andrews & both & NA & NA & NA & NA & NA & NA & -7.359 & 2010-03-21\\
+diff\_mean\_price1 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.083 & NA\\
+diff\_mean\_price2 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.083 & NA\\
+\addlinespace
+diff\_median\_price1 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.092 & NA\\
+diff\_median\_price2 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.077 & NA\\
+diff\_ln\_mean\_price1 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.093 & NA\\
+diff\_ln\_mean\_price2 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.092 & NA\\
+diff\_ln\_median\_price1 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.063 & NA\\
+\addlinespace
+diff\_ln\_median\_price2 & KPSS & NA & NA & NA & NA & NA & NA & NA & 0.054 & NA\\
+\bottomrule
+\end{tabular}}
+\end{table}
