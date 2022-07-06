@@ -60,7 +60,8 @@ results_comb<-table_list %>% map(. %>% map(safely(unitroot_fn))) %>%
         ))
 
 results_comb  %>% 
-        imap(~kbl(.x, booktabs = T,format = "latex") %>%
+        imap(~kbl(.x, booktabs = T,format = "latex",
+                  caption = paste0("Test results for ",.y)) %>%
                     kable_classic(latex_options = "scale_down") %>%
                     add_header_above(c(" " = 1, "ADF Test" = 3, "PP Test" = 3,
                                        "KPSS Test" = 3)) %>% 
