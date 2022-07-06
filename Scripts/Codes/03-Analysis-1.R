@@ -60,7 +60,7 @@ results_comb<-table_list %>% map(. %>% map(safely(unitroot_fn))) %>%
         ))
 
 results_comb  %>% 
-        imap(~kbl(.x, booktabs = T,format = "latex",
+        iwalk(~kbl(.x, booktabs = T,format = "latex",
                   caption = paste0("Test results for ",.y)) %>%
                     kable_classic(latex_options = "scale_down") %>%
                     add_header_above(c(" " = 1, "ADF Test" = 3, "PP Test" = 3,
@@ -94,8 +94,29 @@ res_tabl %>% imap(~kbl(.x, booktabs = T,
                        caption = paste0("Stationarity tests for ",.y)) %>%
                           kable_classic(latex_options = "scale_down")) #for viewing
 
-res_tabl %>% imap(~kbl(.x, booktabs = T,format = "latex",
+res_tabl %>% iwalk(~kbl(.x, booktabs = T,format = "latex",
                        caption = paste0("Stationarity tests for ",.y)) %>%
                          kable_classic(latex_options = "scale_down") %>% 
                           save_kable(paste0("Tables/Results/Unit-root/unit_root-urca-",
+                                            .y,".tex"))) #saved to latex files
+
+
+crit_table<-test_results %>% map(. %>% 
+                             map( possibly(critcial_table_fn,otherwise = NULL)))%>% 
+        pluck(1) %>% 
+        pluck(1) %>% 
+        set_names(c("Unit-Root Tests","Zivot Andrews Test for Structural Breaks",
+                    "KPSS Test"))
+        
+
+
+crit_table %>% imap(~kbl(.x, booktabs = T,
+                         caption = paste0("Critical Values for ",.y)) %>%
+                            kable_classic(latex_options = "scale_down"))  # View critical value tables
+
+
+crit_table %>% iwalk(~kbl(.x, booktabs = T,format = "latex",
+                       caption = paste0("Critical Values for ",.y)) %>%
+                          kable_classic(latex_options = "scale_down") %>% 
+                          save_kable(paste0("Tables/Results/Unit-root/critical_values",
                                             .y,".tex"))) #saved to latex files
