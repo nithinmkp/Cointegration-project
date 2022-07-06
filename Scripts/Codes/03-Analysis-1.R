@@ -89,10 +89,12 @@ res_tabl<-map2(res_tabl,data_arraned_list,~.x %>%
                      !is.na(Breakpoint)~.y$date[Breakpoint])))
 
 
-res_tabl %>% imap(~kbl(.x, booktabs = T) %>%
+res_tabl %>% imap(~kbl(.x, booktabs = T,
+                       caption = paste0("Stationarity tests for ",.y)) %>%
                           kable_classic(latex_options = "scale_down")) #for viewing
 
-res_tabl %>% imap(~kbl(.x, booktabs = T,format = "latex") %>%
+res_tabl %>% imap(~kbl(.x, booktabs = T,format = "latex",
+                       caption = paste0("Stationarity tests for ",.y)) %>%
                          kable_classic(latex_options = "scale_down") %>% 
                           save_kable(paste0("Tables/Results/Unit-root/unit_root-urca-",
                                             .y,".tex"))) #saved to latex files
