@@ -2,7 +2,7 @@
 # Set-up ----
 
 source("Scripts/Functions/functions.R")
-unit_packages<-c("tseries","urca","broom","data.table")
+unit_packages<-c("tseries","urca","broom","data.table","rlist")
 package_fn(unit_packages)
 # Unit root tests-Table ---------------------------------------------------
 
