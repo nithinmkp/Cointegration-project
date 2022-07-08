@@ -69,8 +69,8 @@ results_comb  %>%
 
 
 ### Unit root tests (urca package) ----
-data_arraned_list<-week_bppcat_list %>% map(data_arrane_fn) %>% 
-        subset(names(data_arraned_list)!="Book publishing")
+data_arraned_list<-week_bppcat_list %>% map(data_arrane_fn) 
+data_arraned_list<-data_arraned_list[-which(names(data_arraned_list)=="Book publishing")]        
         
 
 test_results<-table_list %>% map(. %>% 
