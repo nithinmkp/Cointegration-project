@@ -43,7 +43,7 @@ table_fn <- function(dest, x, y) {
 }
 
 ## Data arrange (for adding dates) ----
-data_arrane_fn<-function(x){
+data_arrange_fn<-function(x){
         ind<-index(x)
         x<-data.frame(x)
         rownames(x)<-NULL
