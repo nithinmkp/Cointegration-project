@@ -42,6 +42,8 @@ table_fn <- function(dest, x, y) {
         addParagraph(dest, "\n")
 }
 
+
+
 ## Data arrange (for adding dates) ----
 data_arrange_fn<-function(x){
         ind<-index(x)
@@ -51,9 +53,17 @@ data_arrange_fn<-function(x){
                 mutate(date=ind) %>% 
                 select(date,dplyr::everything())
 }
+
+## Dataframe naming ----
+df_rename_fn<-function(x,nam){
+        x %>% data_arrange_fn() %>% 
+                mutate(varname=nam) %>% 
+                select(date,dplyr::everything())
+}
+
 ## Data Plot Function ----
 data_plot_fn<- function(x,labtitle){
-        x %>% data_arrane_fn() %>% 
+        x %>% data_arrange_fn() %>% 
                 pivot_longer(-date,
                              names_to = "Series",
                              values_to = "Values") %>% 
@@ -85,3 +95,4 @@ word_fn<-function(tab,x,y){
         walk2(x,y,tab_fn)
         done(tab_name)
 }
+

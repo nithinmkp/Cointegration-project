@@ -7,12 +7,27 @@ imap(week_bppcat_list,~datasummary_skim(data=.x,histogram=F,
                                         title=paste0("Summary Statistics: ",.y),
                                         output = "kableExtra")) # For you to view
 
-sum_table_list<-imap(week_bppcat_list,~datasummary_skim(data=.x,histogram=F,
-                        title=paste0("Summary Statistics: ",.y),
-                        output = "latex")) 
-tibble(x=sum_table_list,
-       file=paste0("Tables/Summary Statistics/",names(week_bppcat_list),".tex")) %>% 
-        pwalk(save_kable) # output saved to latex file
+
+comibined_data<-imap(week_bppcat_list,g_fn) %>% map_df(bind_rows)
+
+datasummary((Series=varname)*All(a)~( (Num.Obs=N) + (`Unique (N)`=NUnique)
+                                                     + Mean + SD + Min + Median + Max) ,
+                           data = comibined_data,
+            title="Summary Statistics") # better tables for viewing
+
+datasummary((Series=varname)*All(a)~( (Num.Obs=N) + (`Unique (N)`=NUnique)
+                                      + Mean + SD + Min + Median + Max) ,
+            data = comibined_data,
+            title="Summary Statistics",
+            output = "Tables/Summary Statistics/sum_table.tex")
+
+
+# sum_table_list<-imap(week_bppcat_list,~datasummary_skim(data=.x,histogram=F,
+#                         title=paste0("Summary Statistics: ",.y),
+#                         output = "latex")) 
+# tibble(x=sum_table_list,
+#        file=paste0("Tables/Summary Statistics/",names(week_bppcat_list),".tex")) %>% 
+#         pwalk(save_kable) # output saved to latex file
 
 
 ## Stationarity Analysis ----
@@ -69,7 +84,7 @@ results_comb  %>%
 
 
 ### Unit root tests (urca package) ----
-data_arranged_list<-week_bppcat_list %>% map(. %>% data_arrane_fn ) %>% 
+data_arranged_list<-week_bppcat_list %>% map(. %>% data_arrange_fn ) %>% 
                           discard(names(.)=="Book publishing")
 
 test_results<-table_list %>% map(. %>% 
