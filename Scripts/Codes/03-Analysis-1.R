@@ -15,11 +15,15 @@ datasummary((Series=varname)*All(a)~( (Num.Obs=N) + (`Unique (N)`=NUnique)
                            data = comibined_data,
             title="Summary Statistics") # better tables for viewing
 
-datasummary((Series=varname)*All(a)~( (Num.Obs=N) + (`Unique (N)`=NUnique)
+datasummary((Series=varname)*(Variable=All(a))~( (Num.Obs=N) + (`Unique (N)`=NUnique)
                                       + Mean + SD + Min + Median + Max) ,
             data = comibined_data,
-            title="Summary Statistics",
-            output = "Tables/Summary Statistics/sum_table.tex")
+            title="Summary Statistics",output = "data.frame") %>%
+        kbl(booktabs = T,format = "latex") %>% 
+        kable_styling(full_width = F,latex_options = "scale_down") %>%  
+        column_spec(1, bold = T) %>% 
+        kable_classic() %>% 
+        save_kable("Tables/Summary Statistics/sum_table.tex")
 
 
 # sum_table_list<-imap(week_bppcat_list,~datasummary_skim(data=.x,histogram=F,
